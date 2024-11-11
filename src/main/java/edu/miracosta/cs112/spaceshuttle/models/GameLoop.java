@@ -86,8 +86,7 @@ public class GameLoop {
     public void handleCollision() {
         // TODO: Step 4, ensure the ArrayList is the kind GameObject is looking for
         GameObject collision = shuttle.isColliding(this.debris);
-        if (collision instanceof SpaceDebris) {
-            SpaceDebris<?> spaceDebris = (SpaceDebris<?>) collision;
+        if (collision instanceof SpaceDebris<?> spaceDebris) {
             if (spaceDebris.getDebris() instanceof Asteroid) {
                 shuttle.takeDamage(1);
             } else if (spaceDebris.getDebris() instanceof Resource) {
@@ -112,24 +111,13 @@ public class GameLoop {
     }
 
     public GameObject spawnGameObject() {
-        GameObject retValue = null;
-
         int next = random.nextInt(Resource.Type.values().length + 3);
-        switch (next) {
-            case 0:
-                retValue = new SpaceDebris<>(new Resource(MEDICAL));
-                break;
-            case 1:
-                retValue = new SpaceDebris<>(new Resource(FOOD));
-                break;
-            case 2:
-                retValue = new SpaceDebris<>(new Resource(PARTS));
-                break;
-            default:
-                retValue = new SpaceDebris<>(new Asteroid());
-                break;
-        }
-        return retValue;
+        return switch (next) {
+            case 0 -> new SpaceDebris<>(new Resource(MEDICAL));
+            case 1 -> new SpaceDebris<>(new Resource(FOOD));
+            case 2 -> new SpaceDebris<>(new Resource(PARTS));
+            default -> new SpaceDebris<>(new Asteroid());
+        };
     }
 
     public void handleKeyPressed(KeyEvent event) {
@@ -144,10 +132,8 @@ public class GameLoop {
 
     public void handleKeyReleased(KeyEvent event) {
         switch (event.getCode()) {
-            case UP: shuttle.setDeltaY(0); break;
-            case DOWN: shuttle.setDeltaY(0); break;
-            case LEFT: shuttle.setDeltaX(0); break;
-            case RIGHT: shuttle.setDeltaX(0); break;
+            case UP, DOWN: shuttle.setDeltaY(0); break;
+            case LEFT, RIGHT: shuttle.setDeltaX(0); break;
             default: break;
         }
     }

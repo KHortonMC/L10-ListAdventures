@@ -9,7 +9,7 @@ public class Constants {
 
     public static String[][] contentsList = {
             { // medical supplies
-                    "Gauze", "Plasma", "Sutures", "Asprin", "Anti-biotics"
+                    "Gauze", "Plasma", "Sutures", "Aspirin", "Antibiotics"
             },
             { // food supplies
                     "Cereal", "Ice Cream", "Strawberries", "Tofu", "Bread"

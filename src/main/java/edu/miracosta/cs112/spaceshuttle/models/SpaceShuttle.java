@@ -2,11 +2,9 @@ package edu.miracosta.cs112.spaceshuttle.models;
 
 import edu.miracosta.cs112.spaceshuttle.models.debris.Resource;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SpaceShuttle extends GameObject {
     double deltaX;

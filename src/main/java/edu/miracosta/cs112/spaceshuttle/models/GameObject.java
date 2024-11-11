@@ -26,8 +26,8 @@ public abstract class GameObject {
     public abstract void update();
     public abstract void draw(GraphicsContext gc);
 
-    public GameObject isColliding(List<GameObject> gameobjects) {
-        for (GameObject other : gameobjects) {
+    public GameObject isColliding(List<GameObject> gameObjects) {
+        for (GameObject other : gameObjects) {
             if (isColliding(other) != null) {
                 return other;
             }

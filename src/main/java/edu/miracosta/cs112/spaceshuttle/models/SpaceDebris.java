@@ -9,7 +9,7 @@ public class SpaceDebris <T extends Drawable> extends GameObject {
     private T debris;
     public SpaceDebris(T debris) {
         super(700, random.nextDouble(400), 25);
-        this.debris = debris;
+        setDebris(debris);
     }
 
     public T getDebris() {
