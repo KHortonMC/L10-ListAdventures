@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
@@ -7,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" onKeyReleased="#handleKeyReleased" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.miracosta.cs112.spaceshuttle.controllers.ShuttleResupplyController">
    <children>
-      <Canvas fx:id="canvas" height="416.0" width="614.0" />
+      <Canvas fx:id="canvas" focusTraversable="true" height="416.0" width="614.0" />
       <Pane prefHeight="30.0" prefWidth="600.0">
          <children>
             <Label fx:id="medicalLabel" layoutX="25.0" layoutY="8.0" text="0" />
@@ -34,6 +37,16 @@
             <Label layoutX="462.0" layoutY="6.0" text="Distance" />
          </children>
       </Pane>
-      <Label fx:id="resultsLabel" layoutX="83.0" layoutY="71.0" prefHeight="243.0" prefWidth="448.0" text="Label" visible="false" />
+      <Pane fx:id="gameResults" layoutX="78.0" layoutY="44.0" prefHeight="312.0" prefWidth="458.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbd1f" height="312.0" layoutX="-5.0" stroke="BLACK" strokeType="INSIDE" width="465.0" />
+            <Label fx:id="resultsLabel" layoutX="8.0" layoutY="68.0" prefHeight="239.0" prefWidth="441.0" text="TODO: List all the cargo captured!" />
+            <Label layoutX="33.0" layoutY="14.0" prefHeight="40.0" prefWidth="393.0" text="Run Complete!">
+               <font>
+                  <Font name="Arial Bold Italic" size="51.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </Pane>

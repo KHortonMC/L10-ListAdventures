@@ -51,7 +51,8 @@ public class GameLoop {
                 controller.handleUIUpdate();
 
                 distanceTraveled += 1;
-                if (distanceTraveled > maxDistance) {
+                if (distanceTraveled > maxDistance
+                    || shuttle.getHealthPercent() <= 0) {
                     stopGame();
                 }
             }

@@ -6,6 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 
 public class ShuttleResupplyController {
     @FXML
@@ -22,6 +23,8 @@ public class ShuttleResupplyController {
     ProgressBar distanceProgress;
     @FXML
     Label resultsLabel;
+    @FXML
+    Pane gameResults;
 
     /**
      * Main Game Loop. Runs the logic of the game
@@ -60,7 +63,7 @@ public class ShuttleResupplyController {
 
     public void handleUIResults() {
         // TODO: Step 8, set our results label to visible and fill it with data from the shuttle
-        // resultsLabel.setVisible(true);
+        gameResults.setVisible(true);
         // resultsLabel
     }
 }
