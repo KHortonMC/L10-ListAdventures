@@ -15,12 +15,9 @@ public class SpaceShuttle extends GameObject {
     double drawHeight;
     double health;
     double maxHealth = 100;
-
-    List<Resource> medicalSupplies = new ArrayList<>();
-    List<Resource> foodSupplies = new ArrayList<>();
-    List<Resource> partsSupplies = new ArrayList<>();
-
     Image image;
+
+    // TODO: Step 9, add ArrayLists for medicalSupplies, foodSupplies, and partsSupplies
 
     public SpaceShuttle() {
         super(100, 200, 25);
@@ -33,7 +30,6 @@ public class SpaceShuttle extends GameObject {
     public void setDeltaX(double deltaX) {
         this.deltaX = deltaX;
     }
-
     public void setDeltaY(double deltaY) {
         this.deltaY = deltaY;
     }
@@ -46,45 +42,32 @@ public class SpaceShuttle extends GameObject {
     public void takeDamage(double amount) {
         this.health -= amount;
     }
-
     public double getHealthPercent() {
         return health / maxHealth;
     }
 
     public void transferCargo(Resource cargo) {
+        // TODO: Step 10, add cargo to the correct list
         switch (cargo.getType()) {
             case MEDICAL:
-                medicalSupplies.add(cargo);
                 break;
-                case FOOD:
-                    foodSupplies.add(cargo);
-                    break;
-                    case PARTS:
-                        partsSupplies.add(cargo);
-                        break;
-                        default:
-                            break;
+            case FOOD:
+                break;
+            case PARTS:
+                break;
+            default:
+                break;
         }
     }
 
-    public int getMedicalCount() { return medicalSupplies.size(); }
-    public int getFoodCount() { return foodSupplies.size(); }
-    public int getPartsCount() { return partsSupplies.size(); }
+    // TODO: Step 11, report the size of the cargo lists
+    public int getMedicalCount() { return 0; }
+    public int getFoodCount() { return 0; }
+    public int getPartsCount() { return 0; }
 
     public String getResults() {
-        String retvalue = "Total Medical Supplies: " + medicalSupplies.size() + "\n";
-
-        for (Resource resource : medicalSupplies) {
-            retvalue += resource.getContents() + " ";
-        }
-        retvalue += "\nTotal Food Supplies: " + foodSupplies.size() + "\n";
-        for (Resource resource : foodSupplies) {
-            retvalue += resource.getContents() + " ";
-        }
-        retvalue += "\nTotal Part Supplies: " + partsSupplies.size() + "\n";
-        for (Resource resource : partsSupplies) {
-            retvalue += resource.getContents() + " ";
-        }
+        String retvalue = "Space Shuttle Results TODO Step 12";
+        // TODO: Step 12, parse medicalSupplies, foodSupplies, and partsSupplies to build an output statement
         return retvalue;
     }
 

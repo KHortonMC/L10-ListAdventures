@@ -28,22 +28,22 @@ public abstract class GameObject {
 
     public GameObject isColliding(List<GameObject> gameobjects) {
         for (GameObject other : gameobjects) {
-            if (isColliding(other)) {
+            if (isColliding(other) != null) {
                 return other;
             }
         }
         return null;
     }
 
-    public boolean isColliding(GameObject other) {
+    public GameObject isColliding(GameObject other) {
         if (this != other && other != null) {
             double distance = Math.pow(this.positionX - other.positionX, 2)
                     + Math.pow(this.positionY - other.positionY, 2);
             double radii = Math.pow(this.radius + other.radius, 2);
             if (distance < radii) {
-                return true;
+                return other;
             }
         }
-        return false;
+        return null;
     }
 }
