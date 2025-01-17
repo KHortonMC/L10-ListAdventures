@@ -1,12 +1,16 @@
+![ScreenCap.png](src/main/resources/images/ScreenCap.png)
+
 Welcome to List Adventures! A Space Shuttle Mini-Game
 
 We've got the bare bones of a Space Shuttle supply collection game! Unfortunately, it's not very complete. To turn this dull game into an action packed adventure, we're going to need to follow a few steps.
 
 PART I: (Steps 1-6) - models/GameLoop.java
 
-The first issue we're running into, is that there's only one object getting spawned at a time! We're going to need to refactor that single GameObject debris into an ArrayList<> debris so we'll be able to have more than one of them at once!
+The first issue we're running into, is that there's only one object getting spawned at a time! We're going to need to refactor that single GameObject debris into an ArrayList<Debris> debrisList so we'll be able to have more than one of them at once!
 
 Refactor all instances of this.debris into an ArrayList so there can be more than one debris on screen at a time! Follow the TODO: Steps as listed in ShuttleResupplyController.
+
+Hint: You might want to refactor in stages so your ArrayList can live alongside this.debris until they're both working...then you can remove this.debris. 
 
 PART II: (Steps 7-8) - controllers/ShuttleResupplyController.java
 

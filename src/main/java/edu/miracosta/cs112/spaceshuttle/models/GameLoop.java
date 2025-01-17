@@ -29,7 +29,38 @@ public class GameLoop {
     public SpaceShuttle getShuttle() { return shuttle; }
 
     // TODO: Step 1, convert this debris object into an ArrayList!
+    // HINT: Once this is converted to an ArrayList, you're going to have
+    // a lot of compiler errors. Instead of just deleting debris,
+    // create a strongly typed ArrayList and follow the TODO steps.
+    // When you've reached the last step in this file, delete GameObject debris
+    // and cleanup any compiler errors!
+    // SUGGESTION: Naming your new list, debrisList will let both the old
+    // code and the new code live side by side.
     GameObject debris;
+
+    public void handleRespawn() {
+        respawnTimer -= 0.1;
+        if (respawnTimer <= 0) {
+            respawnTimerReset -= 0.1;
+            respawnTimer = respawnTimerReset;
+
+            if (this.debris == null) {
+                this.debris = spawnGameObject();
+            }
+
+            // TODO: Step 2, add our newly spawned object to our ArrayList!
+            // HINT: Add...
+        }
+    }
+
+    public void handleDespawn(GameObject object) {
+        // TODO: Step 3, refactor to remove this object from our ArrayList!
+        // REMINDER: You have to clear class references or the object won't get cleaned up.
+        // HINT: We want to be clearing the object out of the ArrayList...
+        if (object == this.debris) {
+            this.debris = null;
+        }
+    }
 
     public GameLoop(Canvas canvas, ShuttleResupplyController controller) {
         shuttle = new SpaceShuttle();
@@ -70,7 +101,9 @@ public class GameLoop {
         shuttle.draw(gc);
 
         GameObject offscreen = null;
-        // TODO: Step 2, add a for loop to update & draw every piece of debris
+        // TODO: Step 4, add a for loop to update & draw every piece of debris
+        // HINT: The for loop can be almost the same as this one reference...
+        // if you make a local reference for each item in the list!
         if (this.debris != null) {
             this.debris.update();
             this.debris.draw(gc);
@@ -79,34 +112,19 @@ public class GameLoop {
             }
         }
         if (offscreen != null) {
-            // TODO: Step 3, refactor to remove the object from the list
-            this.debris = null;
+            handleDespawn(offscreen);
         }
     }
 
     public void handleCollision() {
-        // TODO: Step 4, ensure the ArrayList is the kind GameObject is looking for
+        // TODO: Step 5, ensure the ArrayList is the kind GameObject is looking for
         GameObject collision = shuttle.isColliding(this.debris);
         if (collision instanceof SpaceDebris<?> spaceDebris) {
             if (spaceDebris.getDebris() instanceof Asteroid) {
                 shuttle.takeDamage(1);
             } else if (spaceDebris.getDebris() instanceof Resource) {
                 shuttle.transferCargo((Resource) spaceDebris.getDebris());
-                // TODO: Step 5, refactor to remove the object from the list
-                this.debris = null;
-            }
-        }
-    }
-
-    public void handleRespawn() {
-        respawnTimer -= 0.1;
-        if (respawnTimer <= 0) {
-            respawnTimerReset -= 0.1;
-            respawnTimer = respawnTimerReset;
-
-            // TODO: Step 6, add the newly spawned object to the new array
-            if (this.debris == null) {
-                this.debris = spawnGameObject();
+                handleDespawn(this.debris);
             }
         }
     }
