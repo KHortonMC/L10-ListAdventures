@@ -6,7 +6,7 @@ We've got the bare bones of a Space Shuttle supply collection game! Unfortunatel
 
 PART I: (Steps 1-6) - models/GameLoop.java
 
-The first issue we're running into, is that there's only one object getting spawned at a time! We're going to need to refactor that single GameObject debris into an ArrayList<Debris> debrisList so we'll be able to have more than one of them at once!
+The first issue we're running into, is that there's only one object getting spawned at a time! We're going to need to refactor that single GameObject debris into an ArrayList<GameObject> debrisList so we'll be able to have more than one of them at once!
 
 Refactor all instances of this.debris into an ArrayList so there can be more than one debris on screen at a time! Follow the TODO: Steps as listed in ShuttleResupplyController.
 
