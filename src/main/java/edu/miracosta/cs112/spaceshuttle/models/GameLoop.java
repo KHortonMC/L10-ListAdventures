@@ -20,7 +20,6 @@ public class GameLoop {
     double distanceTraveled = 0;
     double maxDistance = 2000;
     ShuttleResupplyController controller;
-    GraphicsContext gc;
 
     Random random = new Random();
 
@@ -46,6 +45,7 @@ public class GameLoop {
 
             if (this.debris == null) {
                 this.debris = spawnGameObject();
+                this.controller.addObject(this.debris);
             }
 
             // TODO: Step 2, add our newly spawned object to our ArrayList!
@@ -58,23 +58,18 @@ public class GameLoop {
         // REMINDER: You have to clear class references or the object won't get cleaned up.
         // HINT: We want to be clearing the object out of the ArrayList...
         if (object == this.debris) {
+            this.controller.removeObject(this.debris);
             this.debris = null;
         }
     }
 
-    public GameLoop(Canvas canvas, ShuttleResupplyController controller) {
-        shuttle = new SpaceShuttle();
+    public GameLoop(ShuttleResupplyController controller) {
+        shuttle = new SpaceShuttle(controller.getShuttleView());
         this.controller = controller;
-        gc = canvas.getGraphicsContext2D();
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                // clear and set a background color
-                gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-                gc.setFill(Color.CORNFLOWERBLUE);
-                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-
                 handleObjectUpdate();
                 handleCollision();
                 handleRespawn();
@@ -98,7 +93,6 @@ public class GameLoop {
 
     public void handleObjectUpdate() {
         shuttle.update();
-        shuttle.draw(gc);
 
         GameObject offscreen = null;
         // TODO: Step 4, add a for loop to update & draw every piece of debris
@@ -106,7 +100,6 @@ public class GameLoop {
         // if you make a local reference for each item in the list!
         if (this.debris != null) {
             this.debris.update();
-            this.debris.draw(gc);
             if (this.debris.getPositionX() < -50) {
                 offscreen = this.debris;
             }

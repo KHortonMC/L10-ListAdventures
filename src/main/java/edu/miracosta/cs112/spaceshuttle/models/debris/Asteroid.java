@@ -1,20 +1,21 @@
 package edu.miracosta.cs112.spaceshuttle.models.debris;
 
-import edu.miracosta.cs112.spaceshuttle.models.Drawable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Asteroid implements Drawable {
-    static Image junk;
+import java.io.Serializable;
+
+public class Asteroid implements ImageInterface {
+    static Image image;
 
     public Asteroid() {
-        if (junk == null) {
-            junk = new Image("file:./src/main/resources/images/asteroid.png");
+        if (image == null) {
+            image = new Image("file:./src/main/resources/images/asteroid.png");
         }
     }
 
     @Override
-    public void draw(GraphicsContext gc, double x, double y, double width, double height) {
-        gc.drawImage(junk, x, y, width, height);
+    public Image getImage() {
+        return image;
     }
 }

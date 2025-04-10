@@ -8,9 +8,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" onKeyReleased="#handleKeyReleased" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.miracosta.cs112.spaceshuttle.controllers.ShuttleResupplyController">
+<Pane fx:id="gamePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" onKeyReleased="#handleKeyReleased" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.miracosta.cs112.spaceshuttle.controllers.ShuttleResupplyController">
    <children>
-      <Canvas fx:id="canvas" focusTraversable="true" height="416.0" width="614.0" />
+      <ImageView fx:id="paneView" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../images/blue.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="shuttleView" fitHeight="59.0" fitWidth="134.0" onKeyPressed="#handleKeyPressed" onKeyReleased="#handleKeyReleased" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../images/SpaceShuttle.png" />
+         </image>
+      </ImageView>
       <Pane prefHeight="30.0" prefWidth="600.0">
          <children>
             <Label fx:id="medicalLabel" layoutX="25.0" layoutY="8.0" text="0" />

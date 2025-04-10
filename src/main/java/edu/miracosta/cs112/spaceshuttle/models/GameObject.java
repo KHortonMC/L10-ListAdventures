@@ -1,6 +1,7 @@
 package edu.miracosta.cs112.spaceshuttle.models;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.ImageView;
 
 import java.util.List;
 
@@ -16,24 +17,9 @@ public abstract class GameObject {
     }
 
     public double getPositionX() { return positionX; }
-    public double getPositionY() { return positionY; }
-    public double getRadius() { return radius; }
 
-    public void setPositionX(double positionX) { this.positionX = positionX; }
-    public void setPositionY(double positionY) { this.positionY = positionY; }
-    public void setRadius(double radius) { this.radius = radius; }
-
+    public abstract ImageView getImageView();
     public abstract void update();
-    public abstract void draw(GraphicsContext gc);
-
-    public GameObject isColliding(List<GameObject> gameObjects) {
-        for (GameObject other : gameObjects) {
-            if (isColliding(other) != null) {
-                return other;
-            }
-        }
-        return null;
-    }
 
     public GameObject isColliding(GameObject other) {
         if (this != other && other != null) {
