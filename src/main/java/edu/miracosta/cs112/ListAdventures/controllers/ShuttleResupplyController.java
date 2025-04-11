@@ -2,6 +2,7 @@ package edu.miracosta.cs112.ListAdventures.controllers;
 
 import edu.miracosta.cs112.ListAdventures.models.GameLoop;
 import edu.miracosta.cs112.ListAdventures.models.SpaceShuttle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -33,9 +34,7 @@ public class ShuttleResupplyController {
     SpaceShuttle spaceShuttle;
     GameLoop gameLoop;
 
-    public ImageView getShuttleView() { return shuttleView; }
-    public void addNode(Node node) { gamePane.getChildren().add(node); }
-    public void removeNode(Node node) { gamePane.getChildren().remove(node); }
+    public ObservableList<Node>  getObservableList() { return gamePane.getChildren(); }
 
     public void initialize() {
         // Even though both #handleKeyPressed

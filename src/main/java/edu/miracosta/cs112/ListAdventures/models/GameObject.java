@@ -4,8 +4,6 @@ import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 
 public abstract class GameObject {
-    protected double positionX;
-    protected double positionY;
     protected ImageView imageView;
 
     public Node getNode() { return imageView; }

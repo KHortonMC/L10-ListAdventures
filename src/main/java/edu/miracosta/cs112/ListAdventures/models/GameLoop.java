@@ -3,7 +3,6 @@ package edu.miracosta.cs112.ListAdventures.models;
 import edu.miracosta.cs112.ListAdventures.controllers.ShuttleResupplyController;
 import javafx.animation.AnimationTimer;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,12 +14,12 @@ public class GameLoop {
     final double respawnReset = 100;
     double respawnTimer = respawnReset;
 
-    List<GameObject> gameObjects = new ArrayList<>();
+    List<GameObject> updateList = new ArrayList<>();
 
     public GameLoop(ShuttleResupplyController controller, SpaceShuttle shuttle) {
         this.controller = controller;
 
-        // todo: 1) add the shuttle to our update list
+        // todo: 1) add the shuttle to our updateList
         // (if the shuttle never gets updated, our keyboard inputs will never be realized)
 
         // this is an example of an Anonymous InnerClass
@@ -31,10 +30,10 @@ public class GameLoop {
                 handleCollision();      // deal with collisions
                 handleDebrisSpawn();    // make new debris
                 controller.handleUIUpdate();
-                // the below shuttle is a reference to our argument
-                // and it gets preserved by the anonymous class!
+                // the below shuttle is a reference to our argument,
+                // it gets preserved by the anonymous class!
                 if (shuttle.isGameOver()) {
-                    // the following 'this' refers the to timer
+                    // the following 'this' refers to the timer
                     // because 'this' is an anonymous inner class
                     // technically we're inheriting/extending timer!
                     this.stop();
@@ -60,13 +59,14 @@ public class GameLoop {
 
             // todo: 3) add the object to our gameObjects for updating
             // todo: 4) add the object's Node to our controller (so we can see it!)
+            // (we could skip this step for the space shuttle because it was already added)
             // tip: GameObject.getNode returns a Node...and JavaFX elements use
-            // lists internally to manage nodes as an ObservableList
+            // we can add that node to controller.getObservableList()
         }
     }
 
     public void handleDebrisDespawn(GameObject gameObject) {
-        // todo: 5) we need to remove the gameobject from our update list
+        // todo: 5) we need to remove the gameObject from our update list
         // todo: 6) and we need to remove the object's Node from our controller
     }
 
