@@ -29,7 +29,7 @@ B) Add a SpaceStation class that extends GameObject -- the space shuttle should 
 
 C) Add a 'boost' resource that temporarily increases the maneuvering speed of the Space Shuttle.
 
-D) Change the spawn logic so that Asteroids are more likely to spawn that resources.
+D) Change the spawn logic so that Asteroids are more likely to spawn than resources.
 
 E) Add a missile class that can be spawned by the space shuttle to destroy asteroids!
 

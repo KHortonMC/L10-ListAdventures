@@ -6,11 +6,11 @@ public class SpaceShuttle extends GameObject {
     double deltaX;
     double deltaY;
     double health;
-    double maxHealth = 2000;
+    double maxHealth = 50;
     double distanceTraveled = 0;
     double maxDistance = 2000;
 
-    // todo: 8) add an ArrayList<String> for each: medical, food, and parts
+    // todo: 8) add an ArrayList<?> for each: medical, food, and parts
 
     public SpaceShuttle(ImageView shuttleImageView) {
         super();

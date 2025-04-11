@@ -11,7 +11,7 @@ public class GameLoop {
     Random random = new Random();
     ShuttleResupplyController controller;
 
-    final double respawnReset = 100;
+    final double respawnReset = 10;
     double respawnTimer = respawnReset;
 
     List<GameObject> updateList = new ArrayList<>();
@@ -73,6 +73,8 @@ public class GameLoop {
     public void handleCollision() {
         // todo: 7) check for collisions between all of the objects
         // gameObject.isColliding returns true if there is a collision
+        // use instanceof to find out what your object is
+        // only worry about collisions between the SpaceShuttle and SpaceDebris!
         // asteroids trigger shuttle.takeDamage
         // resources trigger shuttle.transferCargo
         // despawn objects as necessary
