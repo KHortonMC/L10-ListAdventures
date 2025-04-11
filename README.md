@@ -35,3 +35,14 @@ E) Add a missile class that can be spawned by the space shuttle to destroy aster
 
 F) Write a _Calaveras Literarias_ to display if the space shuttle is destroyed before reaching the end.
 - Calaveras Literarias are short, witty rhyming poems written around **Dia de los Muertos**. They typically are a humorous and playful epitaph of someone's demise. Use an AABB rhyme scheme.
+  
+Example:
+
+The shuttle zoomed through the void<br>
+Managing lists without being annoyed<br>
+Until an asteroid collided head-on<br>
+And now the shuttle is very much gone
+
+Looking forward to hearing your _Calaveras Literarias!_
+
+Still looking for more to do? Try adding audio to the project! Look up 'MediaPlayer' for Java to get started.

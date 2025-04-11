@@ -3,23 +3,18 @@ package edu.miracosta.cs112.ListAdventures.models;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 
-public class GameObject {
+public abstract class GameObject {
     protected double positionX;
     protected double positionY;
     protected ImageView imageView;
 
     public Node getNode() { return imageView; }
 
-    void updateImagePosition() {
-        if (imageView != null) {
-            imageView.setX(positionX);
-            imageView.setY(positionY);
-        }
-    }
+    protected GameObject() { }
 
-    protected GameObject(double positionX, double positionY) {
-        this.positionX = positionX;
-        this.positionY = positionY;
+    public void setPosition(double x, double y) {
+        imageView.setX(x);
+        imageView.setY(y);
     }
 
     public boolean isColliding(GameObject other) {
@@ -27,7 +22,5 @@ public class GameObject {
         return this.imageView.getBoundsInParent().intersects(other.imageView.getBoundsInParent());
     }
 
-    public void update() {
-        updateImagePosition();
-    }
+    public abstract void update();
 }

@@ -21,7 +21,9 @@ public class GameLoop {
         this.controller = controller;
 
         // todo: 1) add the shuttle to our update list
+        // (if the shuttle never gets updated, our keyboard inputs will never be realized)
 
+        // this is an example of an Anonymous InnerClass
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -57,8 +59,9 @@ public class GameLoop {
             SpaceDebris object = new SpaceDebris(SpaceDebris.Type.values()[i]);
 
             // todo: 3) add the object to our gameObjects for updating
-            // todo: 4) add the object's Node to our controller (for free drawing)
-            // tip: GameObject has a method to return the Node our controller wants!
+            // todo: 4) add the object's Node to our controller (so we can see it!)
+            // tip: GameObject.getNode returns a Node...and JavaFX elements use
+            // lists internally to manage nodes as an ObservableList
         }
     }
 
@@ -68,8 +71,10 @@ public class GameLoop {
     }
 
     public void handleCollision() {
-        // todo: 7) check for collisions between all the objects
+        // todo: 7) check for collisions between all of the objects
+        // gameObject.isColliding returns true if there is a collision
         // asteroids trigger shuttle.takeDamage
         // resources trigger shuttle.transferCargo
+        // despawn objects as necessary
     }
 }

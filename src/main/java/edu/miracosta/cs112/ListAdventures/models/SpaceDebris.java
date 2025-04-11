@@ -25,17 +25,20 @@ public class SpaceDebris extends GameObject {
     public String getType() { return types[this.type.ordinal()]; }
 
     public SpaceDebris(Type type) {
-        super(700, random.nextDouble(400));
+        super();
         this.type = type;
         Image image = new Image(icons[this.type.ordinal()]);
         imageView = new ImageView(image);
         imageView.setFitWidth(50);
         imageView.setFitHeight(50);
+        setPosition(700, random.nextDouble(400));
     }
 
     @Override
     public void update() {
-        positionX -= 1;
-        super.update();
+        final double speed = 1;
+        double x = imageView.getX();
+        double y = imageView.getY() - speed;
+        setPosition(x, y);
     }
 }

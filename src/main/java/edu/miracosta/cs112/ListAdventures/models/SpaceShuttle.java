@@ -10,12 +10,14 @@ public class SpaceShuttle extends GameObject {
     double distanceTraveled = 0;
     double maxDistance = 2000;
 
-    // todo: 8) add ArrayLists for medical, food, and parts
+    // todo: 8) add an ArrayList<String> for each: medical, food, and parts
 
     public SpaceShuttle(ImageView shuttleImageView) {
-        super(100, 200);
+        super();
         this.imageView = shuttleImageView;
         health = maxHealth;
+        distanceTraveled = 0;
+        setPosition(50, 200);
     }
 
     public void takeDamage(double amount) {
@@ -36,10 +38,10 @@ public class SpaceShuttle extends GameObject {
 
     @Override
     public void update() {
-        this.positionX += deltaX;
-        this.positionY += deltaY;
+        double x = imageView.getX() + deltaX;
+        double y = imageView.getY() + deltaY;
         distanceTraveled += 1;
-        super.update();
+        setPosition(x, y);
     }
 
     public boolean isGameOver() {
@@ -47,7 +49,7 @@ public class SpaceShuttle extends GameObject {
     }
 
     public void transferCargo(String cargo) {
-        // todo: 9) insert the cargo into the correct array
+        // todo: 9) insert the cargo into the correct array (ie: medicalList.add(cargo);
     }
 
     // todo: 10) return the correct cargo counts
