@@ -1,34 +1,37 @@
+# L10-ListAdventures
+
 ![ScreenCap.png](src/main/resources/images/ScreenCap.png)
 
-Welcome to List Adventures! A Space Shuttle Mini-Game
+## Welcome to List Adventures! A Space Shuttle Mini-Game
 
-We've got the bare bones of a Space Shuttle supply collection game! Unfortunately, it's not very complete. To turn this dull game into an action packed adventure, we're going to need to follow a few steps.
+Open shuttleResupply-view.fxml in SceneBuilder to see the basics of our game! It's not very complete yet, but it has 'almost' all the building blocks we need.
 
-PART I: (Steps 1-6) - models/GameLoop.java
+## Primary Goals (ArrayLists!)
 
-The first issue we're running into, is that there's only one object getting spawned at a time! We're going to need to refactor that single GameObject debris into an ArrayList<GameObject> debrisList so we'll be able to have more than one of them at once!
+PART I: (Steps 1-7) - GameLoop.java
 
-Refactor all instances of this.debris into an ArrayList so there can be more than one debris on screen at a time! Follow the TODO: Steps as listed in ShuttleResupplyController.
+Games thrive on lots of moving parts! The best way for us to keep track of all those moving parts, is with a data structure.
 
-Hint: You might want to refactor in stages so your ArrayList can live alongside this.debris until they're both working...then you can remove this.debris. 
+For this game, we'll be using Java's `List` Interface for _iterating_ through a collection of GameObjects. While there are many implementations of the `List` Interface, in this case, we'll use the `ArrayList` which is a more powerful version of the classic [] array. (dyanimc resizing!)
 
-PART II: (Steps 7-8) - controllers/ShuttleResupplyController.java
+PART II: (Steps 8-11) - SpaceShuttle.java
 
-Update the UI. Now that we've got a decent simulation going, it's time to give the user some feedback on how they're doing. The first part, is to update the UI elements with data from the SpaceShuttle class.
+Now that we have some cargo floating through space for pickup, we need to transfer any retrieved cargo into the Space Shuttle's inventory. For this part, follow the steps in `SpaceShuttle`, adding three new `ArrayLists`, one for medical supplies, one for food, and one for parts.
 
-Follow TODOs in ShuttleResupplyController for the pieces of information that need to be connected. (They've already been imported from the FXML for you!)
+Once the ArrayLists have been filled with cargo, you'll need to iterate through the lists, adding the cargo contents to a cargo manifest string.
 
-Hint: gameLoop has a getter for the space shuttle!
+## Stretch Goals (Expand the Fun!)
 
-PART II: (Steps 9-12) - models/SpaceShuttle.java
+A) Add a new resource type to the game -- create a new image, string, and enumeration value.
 
-Now that we have some cargo floating through space for pickup, we need to transfer any retrieved cargo into the Space Shuttle's inventory. For this part, follow the steps in SpaceShuttle, adding three new ArrayLists, one for medical supplies, one for food, and one for parts.
+B) Add a SpaceStation class that extends GameObject -- the space shuttle should reach the space station at the end of the distance.
+- Extra stretch goal: make the space station start small, and slowly grow while moving towards the space shuttle.
 
-Hint: We don't need to keep the debris instance, just the Resource inside the debris instance!
+C) Add a 'boost' resource that temporarily increases the maneuvering speed of the Space Shuttle.
 
-Follow the TODO comments to complete our space shuttle's cargo management system.
+D) Change the spawn logic so that Asteroids are more likely to spawn that resources.
 
-Once the ArrayLists have been filled with cargo, you'll need to iterate through the lists, adding the cargo contents to a results string to display at the end of the collection game.
+E) Add a missile class that can be spawned by the space shuttle to destroy asteroids!
 
-Hint: Resource has a getContents method!
-
+F) Write a _Calaveras Literarias_ to display if the space shuttle is destroyed before reaching the end.
+- Calaveras Literarias are short, witty rhyming poems written around **Dia de los Muertos**. They typically are a humorous and playful epitaph of someone's demise. Use an AABB rhyme scheme.

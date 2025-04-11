@@ -1,35 +1,33 @@
 package edu.miracosta.cs112.spaceshuttle.models;
 
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 
-import java.util.List;
-
-public abstract class GameObject {
+public class GameObject {
     protected double positionX;
     protected double positionY;
-    protected double radius;
+    protected ImageView imageView;
 
-    protected GameObject(double positionX, double positionY, double radius) {
-        this.positionX = positionX;
-        this.positionY = positionY;
-        this.radius = radius;
+    public Node getNode() { return imageView; }
+
+    void updateImagePosition() {
+        if (imageView != null) {
+            imageView.setX(positionX);
+            imageView.setY(positionY);
+        }
     }
 
-    public double getPositionX() { return positionX; }
+    protected GameObject(double positionX, double positionY) {
+        this.positionX = positionX;
+        this.positionY = positionY;
+    }
 
-    public abstract ImageView getImageView();
-    public abstract void update();
+    public boolean isColliding(GameObject other) {
+        if (this == other) { return false; } // no self collision
+        return this.imageView.getBoundsInParent().intersects(other.imageView.getBoundsInParent());
+    }
 
-    public GameObject isColliding(GameObject other) {
-        if (this != other && other != null) {
-            double distance = Math.pow(this.positionX - other.positionX, 2)
-                    + Math.pow(this.positionY - other.positionY, 2);
-            double radii = Math.pow(this.radius + other.radius, 2);
-            if (distance < radii) {
-                return other;
-            }
-        }
-        return null;
+    public void update() {
+        updateImagePosition();
     }
 }

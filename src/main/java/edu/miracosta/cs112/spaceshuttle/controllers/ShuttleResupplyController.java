@@ -1,9 +1,9 @@
 package edu.miracosta.cs112.spaceshuttle.controllers;
 
 import edu.miracosta.cs112.spaceshuttle.models.GameLoop;
-import edu.miracosta.cs112.spaceshuttle.models.GameObject;
+import edu.miracosta.cs112.spaceshuttle.models.SpaceShuttle;
 import javafx.fxml.FXML;
-import javafx.scene.canvas.Canvas;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -30,69 +30,55 @@ public class ShuttleResupplyController {
     @FXML
     Pane gamePane;
 
-    public ImageView getShuttleView() { return shuttleView; }
-
-    /**
-     * Adds an image view
-     * @param gameObject a valid gameObject with an imageView
-     */
-    public void addObject(GameObject gameObject) {
-        ImageView view = gameObject.getImageView();
-        if (view != null) {
-            gamePane.getChildren().add(view);
-        }
-    }
-
-    /**
-     * Removes an imageView from JavaFX layout
-     * @param gameObject
-     */
-    public void removeObject(GameObject gameObject) {
-        ImageView view = gameObject.getImageView();
-        if (view != null) {
-            gamePane.getChildren().remove(view);
-        }
-    }
-
-    /**
-     * Main Game Loop. Runs the logic of the game
-     */
+    SpaceShuttle spaceShuttle;
     GameLoop gameLoop;
 
-    public void initialize() {
-        gameLoop = new GameLoop(this);
+    public ImageView getShuttleView() { return shuttleView; }
+    public void addNode(Node node) { gamePane.getChildren().add(node); }
+    public void removeNode(Node node) { gamePane.getChildren().remove(node); }
 
+    public void initialize() {
         // Even though both #handleKeyPressed
         // and #handleKeyReleased are defined
         // in the shuttleResupply-view.fxml
-        // These two lines of code are vital for the canvas
+        // These two lines of code are vital for the shuttleView
         // to be able to gather 'focus' and receive key pressed
         // and released events.
         shuttleView.setFocusTraversable(true);
         shuttleView.requestFocus();
-    }
-
-    public void handleKeyPressed(KeyEvent event) {
-        gameLoop.handleKeyPressed(event);
-    }
-
-    public void handleKeyReleased(KeyEvent event) {
-        gameLoop.handleKeyReleased(event);
+        spaceShuttle = new SpaceShuttle(shuttleView);
+        gameLoop = new GameLoop(this, spaceShuttle);
     }
 
     public void handleUIUpdate() {
-        // TODO: Step 7, update the UI elements with data from the shuttle class
-        // healthProgress
-        // medicalLabel
-        // foodLabel
-        // partsLabel
-        // distanceProgress
+        healthProgress.setProgress(spaceShuttle.getHealthPercent());
+        medicalLabel.setText("" + spaceShuttle.getMedicalCount());
+        foodLabel.setText("" + spaceShuttle.getFoodCount());
+        partsLabel.setText("" + spaceShuttle.getPartsCount());
+        distanceProgress.setProgress(spaceShuttle.getDistancePercent());
     }
 
     public void handleUIResults() {
-        // TODO: Step 8, set our results label to visible and fill it with data from the shuttle
+        String results = spaceShuttle.getCargoManifest();
         gameResults.setVisible(true);
-        // resultsLabel
-        // HINT: you need to add the children!
+        resultsLabel.setText(results);
+    }
+
+    public void handleKeyPressed(KeyEvent event) {
+        switch (event.getCode()) {
+            case UP: spaceShuttle.setDeltaY(-1.25); break;
+            case DOWN: spaceShuttle.setDeltaY(1.25); break;
+            case LEFT: spaceShuttle.setDeltaX(-1.25); break;
+            case RIGHT: spaceShuttle.setDeltaX(1.25); break;
+            default: break;
+        }
+    }
+
+    public void handleKeyReleased(KeyEvent event) {
+        switch (event.getCode()) {
+            case UP, DOWN: spaceShuttle.setDeltaY(0); break;
+            case LEFT, RIGHT: spaceShuttle.setDeltaX(0); break;
+            default: break;
+        }
     }
 }
