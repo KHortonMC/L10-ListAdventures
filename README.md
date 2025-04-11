@@ -4,7 +4,7 @@
 
 ## Welcome to List Adventures! A Space Shuttle Mini-Game
 
-Open shuttleResupply-view.fxml in SceneBuilder to see the basics of our game! It's not very complete yet, but it has 'almost' all the building blocks we need.
+Open [ListAdventures.fxml](src/main/resources/edu/miracosta/cs112/ListAdventures/ListAdventures.fxml) in SceneBuilder to see the basics of our game! It's not very complete yet, but it has 'almost' all the building blocks we need.
 
 ## Primary Goals (ArrayLists!)
 

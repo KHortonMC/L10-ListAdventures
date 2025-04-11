@@ -1,4 +1,4 @@
-package edu.miracosta.cs112.spaceshuttle.models;
+package edu.miracosta.cs112.ListAdventures.models;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;

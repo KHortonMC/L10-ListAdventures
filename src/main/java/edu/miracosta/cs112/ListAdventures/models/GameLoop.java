@@ -1,8 +1,11 @@
-package edu.miracosta.cs112.spaceshuttle.models;
+package edu.miracosta.cs112.ListAdventures.models;
 
-import edu.miracosta.cs112.spaceshuttle.controllers.ShuttleResupplyController;
+import edu.miracosta.cs112.ListAdventures.controllers.ShuttleResupplyController;
 import javafx.animation.AnimationTimer;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameLoop {

@@ -1,7 +1,7 @@
-package edu.miracosta.cs112.spaceshuttle.controllers;
+package edu.miracosta.cs112.ListAdventures.controllers;
 
-import edu.miracosta.cs112.spaceshuttle.models.GameLoop;
-import edu.miracosta.cs112.spaceshuttle.models.SpaceShuttle;
+import edu.miracosta.cs112.ListAdventures.models.GameLoop;
+import edu.miracosta.cs112.ListAdventures.models.SpaceShuttle;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -40,7 +40,7 @@ public class ShuttleResupplyController {
     public void initialize() {
         // Even though both #handleKeyPressed
         // and #handleKeyReleased are defined
-        // in the shuttleResupply-view.fxml
+        // in the ListAdventures.fxml
         // These two lines of code are vital for the shuttleView
         // to be able to gather 'focus' and receive key pressed
         // and released events.

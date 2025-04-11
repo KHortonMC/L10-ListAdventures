@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                edu.miracosta.cs112.spaceshuttle/edu.miracosta.cs112.spaceshuttle.ShuttleResupplyMain
+                                edu.miracosta.cs112.spaceshuttle/edu.miracosta.cs112.ListAdventures.ShuttleResupplyMain
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
