@@ -48,7 +48,7 @@ public class SpaceShuttle extends GameObject {
         return distanceTraveled > maxDistance || health <= 0;
     }
 
-    public void transferCargo(String cargo) {
+    public void transferCargo(SpaceDebris cargo) {
         // todo: 9) insert the cargo into the correct array (ie: medicalList.add(cargo);
     }
 
