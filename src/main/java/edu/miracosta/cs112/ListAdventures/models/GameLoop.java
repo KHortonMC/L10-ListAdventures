@@ -60,7 +60,7 @@ public class GameLoop {
             // todo: 3) add the object to our gameObjects for updating
             // todo: 4) add the object's Node to our controller (so we can see it!)
             // (we could skip this step for the space shuttle because it was already added)
-            // tip: GameObject.getNode returns a Node...and JavaFX elements use
+            // tip: GameObject.getNode returns a Node...
             // we can add that node to controller.getObservableList()
         }
     }
@@ -72,11 +72,15 @@ public class GameLoop {
 
     public void handleCollision() {
         // todo: 7) check for collisions between all of the objects
-        // gameObject.isColliding returns true if there is a collision
-        // use instanceof to find out what your object is
-        // only worry about collisions between the SpaceShuttle and SpaceDebris!
-        // asteroids trigger shuttle.takeDamage
-        // resources trigger shuttle.transferCargo
-        // despawn objects as necessary
+        // there's a lot that needs to happen to collide all the objects
+        // here's an outline to get you started:
+        // You need to check all the objects against all the other objects
+        // This will require nested for loops -- outer loop + inner loop
+        // use gameObject.isColliding to check for collisions
+        // if you do have a collision, you need to determine what the objects are
+        // hint: instanceof is making a return! And (type casting)
+        // Asteroids should trigger the SpaceShuttle's takeDamage
+        // Resources should trigger the SpaceShuttle's transferCargo
+        // be sure to despawn the Debris when you're done with it
     }
 }
